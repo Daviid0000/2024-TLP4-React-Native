@@ -28,12 +28,13 @@ for ( let x in objeto ) {
 
 // Manera de obtener el último elemento de un array
 const users = [
-    'Deelyn_ksks',
-    'furanko-Sama',
-    'bel_g',
-    'ChurrascoViolento',
-    'Blito',
-    'Sofii',
+    'Carmen',
+    'Valeria',
+    'Antonela',
+    'Facundo',
+    'Álvaro',
+    'David',
+
     ];
     
    users.at(-1)

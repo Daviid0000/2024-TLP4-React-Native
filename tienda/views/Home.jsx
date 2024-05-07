@@ -88,46 +88,48 @@ const Screen1 = () => {
     const navigation = useNavigation();
     const [images, setImages] = useState([]);
 
-    const removeImage = (index) => {
-        const newImages = [...images];
-        newImages.splice(index, 1);
-        setImages(newImages);
+    const removeImage = (id) => {
+        setImages(prevImages => prevImages.filter(image => image.id !== id))
     };
 
     useEffect(() => {
-        console.log('Incrementado!');
+        // console.log('Incrementado!');
+        setImages([
+            {
+                id:1,
+                nombre: 'gato montes',
+                descripcion:'Gato con rayas negras, ojos amarillos, esponjocito, se sabe sentar.',
+                img: gato1,
+            },
+            {
+                id:2,
+                nombre: 'gato silvestre',
+                descripcion:'Gato marrón, con mirada de maleante, es desconfiado y le cuesta adaptarse a nuevos ambientes.',
+                img: gato2,
+            },
+            {
+                id:3,
+                nombre: 'gato alvino',
+                descripcion:'Gato gris, tranquilo, duerme mucho, come mucho, le gustan las caricias en su barriga.',
+                img: gato3,
+            },
+            {
+                id:4,
+                nombre: 'gato negro',
+                descripcion:'Gato que parece tigre, le gusta bañarse, ver novelas, comer saludable y jugar a algo tranquilo.',
+                img: gato4,
+            }
+        ])
     }, []);
 
-    const DATOS = [
-        {
-            nombre: 'gato montes',
-            descripcion:'Gato con rayas negras, ojos amarillos, esponjocito, se sabe sentar.',
-            img: gato1,
-        },
-        {
-            nombre: 'gato silvestre',
-            descripcion:'Gato marrón, con mirada de maleante, es desconfiado y le cuesta adaptarse a nuevos ambientes.',
-            img: gato2,
-        },
-        {
-            nombre: 'gato alvino',
-            descripcion:'Gato gris, tranquilo, duerme mucho, come mucho, le gustan las caricias en su barriga.',
-            img: gato3,
-        },
-        {
-            nombre: 'gato negro',
-            descripcion:'Gato que parece tigre, le gusta bañarse, ver novelas, comer saludable y jugar algo tranquilo.',
-            img: gato4,
-        }
-    ]
-    const Item = ({ title, img, descripcion }) => (
-        <View style={styles.imageContainer}>
-            <Text>{title}</Text>
-            <Text>{descripcion}</Text>
-
+    
+    const Item = ({ nombre, img, descripcion, id }) => (
+        <View key={id} style={styles.imageContainer}>
+                <Text style={styles.title}>{nombre}</Text>
+                <Text style={styles.textDescription}>{descripcion}</Text>
             <Image style={styles.image} source={img} />
             
-             <Button title="Adoptar" onPress={() => removeImage(index)} /> 
+             <Button title="Adoptar" onPress={() => removeImage(id)} /> 
         </View>
     )
 
@@ -141,8 +143,9 @@ const Screen1 = () => {
             </View>  
 
             <FlatList 
-                data={DATOS}
-                renderItem={({item}) => <Item title={item.nombre} descripcion={item.descripcion} img={item.img} />}
+                data={images}
+                renderItem={({item}) => <Item {...item} />}
+                keyExtractor={(item) => item.id.toString()}
             />
         </>
     );
@@ -150,14 +153,14 @@ const Screen1 = () => {
 
 const styles = ScaledSheet.create({
     container: {
-        marginTop: '30@ms',
+        marginTop: '50@ms',
         alignItems:'center',
         marginBottom: '10@vs'
     },
     text: {
         fontSize: '30@s',
-        textAlign:'center'
-
+        textAlign:'center',
+        marginBottom:'10@ms'
     },
     image: {
         width: 200,
@@ -168,13 +171,32 @@ const styles = ScaledSheet.create({
     imageContainer: {
         textAlign:'center',
         flexWrap: 'wrap',
-        paddingHorizontal: '5@s',
         alignContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        backgroundColor: '#039',
+        paddingHorizontal: 50,
+        paddingVertical:10,
+        marginHorizontal: 50,
+        marginVertical:10,
+        borderRadius: 10,
+        opacity:0.8
+
     },
     scrollContainer: {
         flexGrow: 1,
     },
+    textDescription: {
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 15
+
+    },
+    title:{
+        color: '#fff',
+        textDecorationLine: 'underline',
+        textAlign: 'center',
+        fontSize: 20
+    }
 });
 
 export default Screen1;

@@ -1,5 +1,5 @@
 import { View, Text, Button, FlatList, Image } from "react-native"
-import { ScaledSheet } from "react-native-size-matters"
+import { ScaledSheet, s } from "react-native-size-matters"
 import { useNavigation } from '@react-navigation/native';
 import perro1 from '../assets/perros/perro1.jpg'
 import perro2 from '../assets/perros/perro2.jpg'
@@ -14,34 +14,35 @@ const OtraVentana = () => {
 
     const DATOS = [
         {
-            nombre: 'Perro1',
-            descripcion:'Desc1',
+            nombre: 'Perro Lobo',
+            descripcion:'Blanco con gris, amigable, jugueton, come mucho, duerme en las camas.',
             img: perro1,
         },
         {
-            nombre: 'Perro2',
-            descripcion:'Desc2',
+            nombre: 'Perro Peluche',
+            descripcion:'Chiquito, nunca crece, jugueton, necesita mucha atención, mucha comida, mucho amor.',
             img: perro2,
         },
         {
-            nombre: 'Perro 3',
-            descripcion:'Desc3',
+            nombre: 'Perro Básico',
+            descripcion:'Negro, obediente, miedoso, no come mucho, dale un hueso y puchero y está contento.',
             img: perro3,
         },
         {
-            nombre: 'Perro 4',
-            descripcion:'Desc4',
+            nombre: 'Perro vaca',
+            descripcion:'2X1 Parecen vacas pero son perros blancos con manchas negras, macho y hembra, pareja.',
             img: perro4,
         }
     ]
 
     const Item = ({nombre, descripcion, img}) => {
-        <View>
-            <Text>{nombre}</Text>
-            <Text>{descripcion}</Text>
-            
+        return(
+            <View style={styles.imageContainer}>
+                    <Text style={styles.title} >{nombre}</Text>
+                    <Text style={styles.textDescription} >{descripcion}</Text>
             <Image style={styles.image} source={img}/>
         </View>
+        )
     }
 
     return(
@@ -64,17 +65,41 @@ const OtraVentana = () => {
 
 const styles = ScaledSheet.create({
     container: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: '30@ms',
+        marginTop: '50@ms',
+        alignItems:'center'
     },
     text: {
         fontSize: '30@s',
         textAlign: 'center',
+        marginBottom:'10@ms'
     },
     image: {
         width: 200,
         height:200
+    },
+    imageContainer: {
+        alignContent:'center',
+        alignItems:'center',
+        marginBottom: '10@vs',
+        backgroundColor: '#039',
+        paddingHorizontal: 50,
+        paddingVertical:10,
+        marginHorizontal: 50,
+        marginVertical:10,
+        borderRadius: 10,
+        opacity:0.8
+    },
+    textDescription: {
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 15
+
+    },
+    title:{
+        color: '#fff',
+        textDecorationLine: 'underline',
+        textAlign: 'center',
+        fontSize: 20
     }
 });
 export default OtraVentana

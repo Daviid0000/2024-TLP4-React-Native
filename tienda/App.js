@@ -10,8 +10,8 @@ export default function App() {
     <>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name='home' options={{headerShown: false}} component={Home}/>
-          <Stack.Screen name='OtraVentana' options={{headerShown: false}} component={OtraVentana}/>
+          <Stack.Screen name='home' component={Home}/>
+          <Stack.Screen name='OtraVentana'  component={OtraVentana}/>
         </Stack.Navigator>
       </NavigationContainer>
     </>

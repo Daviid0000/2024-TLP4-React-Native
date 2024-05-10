@@ -1,16 +1,30 @@
 import { View, Text, Button, FlatList, Image } from "react-native"
-import { ScaledSheet, s } from "react-native-size-matters"
+import { ScaledSheet } from "react-native-size-matters"
 import { useNavigation } from '@react-navigation/native';
 import perro1 from '../assets/perros/perro1.jpg'
 import perro2 from '../assets/perros/perro2.jpg'
 import perro3 from '../assets/perros/perro3.jpg'
 import perro4 from '../assets/perros/perro4.jpg'
+import { useEffect, useState } from "react";
 
 
 const OtraVentana = () => {
 
     const navigation = useNavigation();
 
+    const api = "https://swapi.dev/api/people"
+
+    useEffect(() => {
+        fetch(api)
+        .then((res) => res.json())
+        .then((data) => { setImgPerro(data.results[0])
+            }   
+        )
+    },[])
+
+    const [imgPerro, setImgPerro] = useState()
+    const nombres = imgPerro
+    console.log("imagen perro:",nombres)
 
     const DATOS = [
         {
@@ -56,7 +70,7 @@ const OtraVentana = () => {
 
             <FlatList 
                 data={DATOS} 
-                renderItem={({item}) => <Item nombre={item.nombre} descripcion={item.descripcion} img={item.img} />}
+                renderItem={({item}) => <Item nombre={nombres.name} descripcion={item.descripcion} img={item.img} />}
             />
         </>
     )

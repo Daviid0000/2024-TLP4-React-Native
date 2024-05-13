@@ -6,84 +6,83 @@ import { useEffect, useState } from "react";
 
 const OtraVentana = () => {
 
-
-
-// const styles = ScaledSheet.create({
-//     container: {
-//         marginTop: '50@ms',
-//         alignItems:'center'
-//     },
-//     text: {
-//         fontSize: '30@s',
-//         textAlign: 'center',
-//         marginBottom:'10@ms'
-//     },
-//     image: {
-//         width: 200,
-//         height:200
-//     },
-//     imageContainer: {
-//         alignContent:'center',
-//         alignItems:'center',
-//         marginBottom: '10@vs',
-//         backgroundColor: '#039',
-//         paddingHorizontal: 50,
-//         paddingVertical:10,
-//         marginHorizontal: 50,
-//         marginVertical:10,
-//         borderRadius: 10,
-//         opacity:0.8
-//     },
-//     textDescription: {
-//         color: '#fff',
-//         textAlign: 'center',
-//         fontSize: 15
-
-//     },
-//     title:{
-//         color: '#fff',
-//         textDecorationLine: 'underline',
-//         textAlign: 'center',
-//         fontSize: 20
-//     }
-// });
-
-const [images, setImages] = useState([]);
-
-useEffect(() => {
-  const fetchImages = async () => {
-    try {
-      const response = await fetch('https://dog.ceo/api/breed/pug/images');
-      const data = await response.json();
-      setImages(data.message);
-    } catch (error) {
-      console.error('Error fetching images:', error);
-    }
-  };
-
-  fetchImages();
-}, []);
-
-const renderItem = ({ item }) => (
+    const navigation = useNavigation();
     
-  <View>
-    <Image
-    source={{ uri: item }}
-    style={{ width: 200, height: 200, marginBottom: 10 }}
-  />
-  </View>
-);
+    const [imagenes, setImagenes] = useState([]);
+    
+    useEffect(() => {
+        const obtenerImagenes = async () => {
+            const response = await fetch('https://dog.ceo/api/breed/pug/images');
+            const data = await response.json();
+            setImagenes(data.message);
+          
+        };
 
-return (
-  <View>
-    <Text>Adoptar perros</Text>
-    <FlatList
-      data={images}
-      renderItem={renderItem}
-      keyExtractor={(item, index) => index.toString()}
-    />
-  </View>  
-);
+    obtenerImagenes();
+    }, []);
+
+    const Item = ({ item }) => (
+    
+        <View style={styles.imageContainer}>
+            <Image
+              source={{ uri: item }}
+              style={styles.image}
+            />
+            <Button title="Adoptar"/>
+        </View>
+    );
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>Adoptar perros</Text>
+        <Button title="Adoptar gatos" onPress={() => navigation.navigate('home')} />                    
+        <FlatList
+          data={imagenes}
+          renderItem={Item}
+          keyExtractor={(index) => index.toString()}
+        />
+      </View>  
+    );
 }
+
+const styles = ScaledSheet.create({
+    
+    container: {
+        marginTop: '50@ms',
+        alignItems:'center'
+    },
+    text: {
+        fontSize: '30@s',
+        textAlign: 'center',
+        marginBottom:'10@ms'
+    },
+    image: {
+        width: 200,
+        height:200,
+        marginBottom:10
+    },
+    imageContainer: {
+        alignContent:'center',
+        alignItems:'center',
+        backgroundColor: '#039',
+        paddingHorizontal: 50,
+        paddingVertical:10,
+        marginVertical:10,
+        borderRadius: 10,
+        opacity:0.8
+    },
+    textDescription: {
+        color: '#fff',
+        textAlign: 'center',
+        fontSize: 15
+
+    },
+    title:{
+        color: '#fff',
+        textDecorationLine: 'underline',
+        textAlign: 'center',
+        fontSize: 20
+    }
+});
 
 export default OtraVentana

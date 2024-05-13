@@ -11,7 +11,7 @@ const Screen1 = () => {
     const navigation = useNavigation();
     const [images, setImages] = useState([]);
 
-    const removeImage = (id) => {
+    const eliminarImagen = (id) => {
         setImages(prevImages => prevImages.filter(image => image.id !== id))
     };
 
@@ -51,7 +51,7 @@ const Screen1 = () => {
                 <Text style={styles.textDescription}>{descripcion}</Text>
             <Image style={styles.image} source={img} />
             
-             <Button title="Adoptar" onPress={() => removeImage(id)} /> 
+             <Button title="Adoptar" onPress={() => eliminarImagen(id)} /> 
         </View>
     )
 
@@ -104,9 +104,7 @@ const styles = ScaledSheet.create({
         opacity:0.8
 
     },
-    scrollContainer: {
-        flexGrow: 1,
-    },
+
     textDescription: {
         color: '#fff',
         textAlign: 'center',

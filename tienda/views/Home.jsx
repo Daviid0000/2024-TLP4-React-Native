@@ -62,6 +62,7 @@ const Screen1 = () => {
                     Adopta gatos
                 </Text>
                 <Button title="Adoptar perros" onPress={() => navigation.navigate('OtraVentana')} />                    
+                <Button title="Login" onPress={() => navigation.navigate('Login')} />                    
             </View>  
 
             <FlatList 

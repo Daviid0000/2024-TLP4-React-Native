@@ -18,11 +18,12 @@ const Register = () => {
     const [emailCreate, setEmailCreate] = useState('');
     const [passCreate, setPassCreate] = useState('');
 
-
+    const [userError, setUserError] = useState('');
+    const [passError, setPassError] = useState('');
 
     return(
         <>
-            <View style={StylesRegister.container}>
+            <View style={StylesLogin.container}>
                 <Stack.Screen options={ { headerShown:false } } />
                 <Text style={StylesLogin.title}>Crea una cuenta</Text>
                 <View >
@@ -32,6 +33,7 @@ const Register = () => {
                         onChangeText={textoNuevo => setUserCreate(textoNuevo)}
                         value={userCreate}
                     />
+                    {userError ? <Text style={{color: 'red'}}>{userError}</Text> : null}
                     <TextInput
                         style={StylesRegister.input}
                         placeholder="Email"
@@ -45,6 +47,7 @@ const Register = () => {
                         value={passCreate} 
                         secureTextEntry
                     />
+                    {passError ? <Text style={{color: 'red'}}>{passError}</Text> : null}
                 <View style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
                     <CheckboxComponent/>
                     <Text>Terminos y Condiciones</Text>
@@ -52,9 +55,9 @@ const Register = () => {
                 </View>
 
                 <Button 
-                buttonStyle={StylesLogin.button}
-                title="Registrate ahora"
-                onPress={() => createUser(emailCreate, users, userCreate, passCreate, setUsers, navigation, setPassCreate, setEmailCreate, setUserCreate)} 
+                    buttonStyle={StylesLogin.button}
+                    title="Registrate ahora"
+                    onPress={() => createUser(emailCreate, users, userCreate, passCreate, setUsers, navigation, setPassCreate, setEmailCreate, setUserCreate, setUserError, setPassError)} 
                 />
                 <Text>O registrarte con una red social</Text>
                 <View style={{display:'flex', flexDirection:'row', gap: 5}}>

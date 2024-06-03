@@ -8,6 +8,7 @@ export const StylesLogin = StyleSheet.create({
       marginTop: 42,
     },
     title: {
+      textAlign: 'center',
       fontSize: 30
     },
     subtitle: {
@@ -70,4 +71,23 @@ export const StylesRegister = StyleSheet.create({
     flexDirection:'column',
     alignItems: 'flex-start'
   }
+})
+
+export const StylesHome = StyleSheet.create({
+  title:{
+      fontSize: 20,
+      textAlign: 'center'
+  },
+  button:{
+      borderRadius: 20,
+      marginHorizontal: 'auto'
+    },
+    taskItem: {
+      display: 'flex',
+      flex:1,
+      padding: 10,
+      flexDirection: 'row',
+      borderBottomWidth: 1,
+      borderBottomColor: '#ccc',
+  },
 })

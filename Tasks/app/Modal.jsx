@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Text, View, StyleSheet, TextInput } from "react-native";
 import { Button } from "@rneui/base";
 import { StylesLogin } from "./Styles";
@@ -36,7 +36,7 @@ export const ComponentModalTask = ({visible, setVisible, addTask }) => {
   const [fecha, setFecha] = useState('');
 
   const handleCreateTask = () => {
-    const newTask = { name: titulo, description: descripcion, author: autor, date: fecha };
+    const newTask = { username: titulo, description: descripcion, author: autor, date: fecha };
     addTask(newTask);
     setVisible(false);
     setTitulo('');
@@ -92,6 +92,141 @@ export const ComponentModalTask = ({visible, setVisible, addTask }) => {
   )
 }
 
+export const ModalEditTask = ({visible, setVisible, task, updateTask}) => {
+
+  const [username, setUsername] = useState('');
+  const [description, setDescription] = useState('');
+  const [author, setAuthor] = useState('');
+  const [date, setDate] = useState('');
+
+  useEffect(() => {
+    if (task) {
+      setUsername(task.username);
+      setDescription(task.description);
+      setAuthor(task.author);
+      setDate(task.date);
+    }
+  }, [task]);
+
+  const handleSave = () => {
+    const updatedTask = {username, description, author, date};
+    updateTask(updatedTask);
+    setVisible(false);
+  };
+
+  return(
+    <>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={visible}
+        onRequestClose={() => {
+         setVisible(!visible);
+        }}>
+          <View style={StylesLogin.centeredView}>
+            <View style={StylesLogin.modalView}>
+              <Text style={styles.subtitle}>Edite su tarea</Text>
+                <TextInput 
+                  style={styles.input} 
+                  onChangeText={setUsername} 
+                  placeholder='Título' 
+                  value={username}
+                />
+
+                <TextInput 
+                  style={styles.input} 
+                  onChangeText={setDescription} 
+                  placeholder='Descripción'
+                  value={description} 
+                />
+                <TextInput 
+                  style={styles.input} 
+                  onChangeText={setAuthor} 
+                  placeholder='Autor' 
+                  value={author}
+                />
+                <TextInput 
+                  style={styles.input} 
+                  onChangeText={setDate} 
+                  placeholder='Fecha' 
+                  value={date}
+                />
+              <Button
+                buttonStyle={styles.button}
+                title="Guardar"
+                onPress={handleSave}
+                >
+              </Button>
+              
+            </View>
+          </View>
+      </Modal>
+    </>
+  )
+}
+
+export const ViewTaskModal = ({visible, setVisible, task, openEditModal, completeTask}) => {
+
+  return(
+    <>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={visible}
+        onRequestClose={() => {
+         setVisible(!visible);
+        }}>
+          <View style={StylesLogin.centeredView}>
+            <View style={StylesLogin.modalView}>
+              {
+                task ? (
+                  <>
+                    <View style={{justifyContent:'flex-start'}}>
+                      <Text style={styles.task}>Tarea: {task.username}</Text>
+                      <Text style={styles.task}>Descripción: {task.description}</Text>
+                      <Text style={styles.task}>Autor: {task.author}</Text>
+                      <Text style={styles.task}>Fecha: {task.date}</Text>
+                    </View>
+
+                    <Button 
+                      buttonStyle={styles.button}
+                      title='Editar'
+                      onPress={() => {
+                        openEditModal(task);
+                        setVisible(false);
+                      }}
+                    />
+                    <Button 
+                      buttonStyle={styles.button}
+                      title='Hecho'
+                      onPress={() => {
+                        completeTask(task);
+                      }}
+                    />
+                    <Button 
+                      buttonStyle={{ paddingHorizontal: 25, borderRadius: 20 }}
+                      title="Configuración"
+                      onPress={() => navigation.navigate("Settings")} 
+                    />
+                  </>
+                )
+                : (
+                  <View>
+                    <Text style={styles.subtitle}>La tarea seleccionada no existe</Text>
+                    <Button 
+                      title='Cerrar' 
+                      onPress={() => setVisible(false)}
+                    />
+                  </View>
+                )
+              }
+            </View>
+          </View>
+      </Modal>
+    </>
+  )
+}
+
 const styles = StyleSheet.create({
   title:{
       fontSize: 20,
@@ -113,5 +248,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width:100,
     marginTop:10
+  },
+  task: {
+    marginVertical: 5,
+    fontSize:16,
+    borderBottomWidth:2,
+    borderColor: '#2231'
   }
 })

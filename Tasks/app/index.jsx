@@ -1,7 +1,8 @@
-import { StyleSheet,View} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Stack } from 'expo-router';
 import { useNavigation } from '@react-navigation/native';
 import { Button } from '@rneui/base';
+import { StylesLogin } from './Styles';
 
 export default function HomeScreen() {
 
@@ -10,6 +11,7 @@ export default function HomeScreen() {
   return (
     <>
       <View style={styles.container}>
+      <Text style={StylesLogin.title}>Inicia sesión en tu cuenta</Text>
         <Stack.Screen options={ { headerShown:false } } />
         <View style={styles.item}>
           <Button 
@@ -23,6 +25,11 @@ export default function HomeScreen() {
           onPress={() => navigation.navigate("Register")} 
           />
         </View>
+          <Button 
+            buttonStyle={{paddingHorizontal:25, borderRadius:20}}
+            title="Configuración"
+            onPress={() => navigation.navigate("Ajustes")} 
+          />
     </View>
     </>
   );
@@ -39,6 +46,7 @@ const styles = StyleSheet.create({
   item:{
     display: 'flex',
     flexDirection: 'row',
-    gap:25
+    gap:25,
+    marginVertical: 10
   }
 });

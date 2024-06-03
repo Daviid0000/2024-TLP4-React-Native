@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { StylesLogin, StylesRegister } from './Styles';
@@ -61,7 +61,10 @@ const Register = () => {
                     <MyButton iconName="logo-facebook" iconSize={15} />
                     <MyButton iconName="logo-google" iconSize={15} />
                 </View>
-                <Text>¿Ya tienes una cuenta? Logeate</Text>
+
+                <Pressable onPress={() => navigation.navigate("Login")}>
+                    <Text>Ya tienes una cuenta? Ingresa aquí</Text>
+                </Pressable>
 
             </View>
         </>

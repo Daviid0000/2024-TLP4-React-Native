@@ -32,8 +32,8 @@ export const validationUser = (user, pass, usuarios, navigation, setModalVisible
     }
   }
 
-  export const createTask = (modalVisible, setModalVisible, titulo, descripcion, autor, fecha, createTask) => {
-    setModalVisible(true)
-    console.log("Abrir modal")
+
+
+  export const editTask = (name, description, author, date) => {
     
   }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Text, View, StyleSheet, TextInput } from "react-native";
 import { Button } from "@rneui/base";
-import { StylesLogin } from "./Styles";
+import { StylesLogin } from '../components/Styles'
 
 export const ComponentModal = ({visible, setVisible}) => {
 

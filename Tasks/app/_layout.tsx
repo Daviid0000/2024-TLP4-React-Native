@@ -5,7 +5,13 @@ export default function RootLayout() {
   return (
 
     <UserProvider>
-      <Stack>
+      <Stack screenOptions={{
+        statusBarTranslucent: false,
+        navigationBarHidden: true,
+        contentStyle: {
+          backgroundColor: '#fff'
+        }
+      }} >
         <Stack.Screen name="index" />
         <Stack.Screen name="Home" />
         <Stack.Screen name="Register" />

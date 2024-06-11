@@ -9,7 +9,10 @@ export const StylesLogin = StyleSheet.create({
     },
     title: {
       textAlign: 'center',
-      fontSize: 30
+      fontSize: 30,
+      fontWeight: 'bold',
+      marginBottom: 20,
+      color: '#333'
     },
     subtitle: {
       fontSize: 20,
@@ -18,11 +21,34 @@ export const StylesLogin = StyleSheet.create({
       padding: 10,
       margin: 10
     },
+    inputContainer: {
+      marginBottom: 15,
+      width: '100%',
+    },
     container: {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
       padding: 10
+    },
+    input: {
+      borderBottomWidth: 1,
+      borderBottomColor: '#ccc',
+      paddingVertical: 10,
+      paddingHorizontal: 5,
+      fontSize: 16,
+      width: '100%',
+    },
+    inputError: {
+      borderBottomColor: 'red',
+    },
+    inputWithText: {
+      borderBottomColor: '#000',
+    },
+    errorText: {
+      color: 'red',
+      fontSize: 12,
+      marginTop: 5,
     },
     image: {
       width: 200,
@@ -51,20 +77,24 @@ export const StylesLogin = StyleSheet.create({
     button: {
       borderRadius: 20,
       paddingHorizontal:60
+      
     }
 })
 
 export const StylesRegister = StyleSheet.create({
   container:{
+    flex:1,
     alignItems:'center',
-    margin: 'auto'
+    margin: 'auto',
+    backgroundColor: '#f5f5f5',
   },
   input:{
     fontSize:20,
     width:300,
     borderBottomWidth:2,
     borderColor:'#2231',
-    paddingVertical: 10
+    paddingVertical: 10,
+    marginVertical:5
   },
   InputContainer:{
     display:'flex',

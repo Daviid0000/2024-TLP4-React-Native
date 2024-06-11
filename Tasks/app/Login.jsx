@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { TextInput, View, Text, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Stack } from 'expo-router';
-import { StylesLogin } from './Styles';
+import { StylesLogin, StylesRegister } from './Styles';
 import { UserContext } from './userContext';
 import { validationUser } from './Validations';
 import { ComponentModal } from './Modal';
@@ -27,13 +27,13 @@ function HomeScreen() {
         <Stack.Screen/>
             <Text style={StylesLogin.title}>Inicia sesión en tu cuenta</Text>
                 <TextInput
-                    style={StylesLogin.subtitle}
+                    style={StylesRegister.input}
                     placeholder="Username"
                     onChangeText={textoNuevo => setUser(textoNuevo)}
                     value={user}
                 />
                 <TextInput
-                    style={StylesLogin.subtitle}
+                    style={StylesRegister.input}
                     placeholder="Password"
                     onChangeText={contraseña => setPass(contraseña)}
                     value={pass} 

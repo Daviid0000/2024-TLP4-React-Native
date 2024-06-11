@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Text, View, StyleSheet, TextInput } from "react-native";
 import { Button } from "@rneui/base";
-import { StylesLogin } from "./Styles";
+import { StylesLogin, StylesRegister } from "./Styles";
 
 export const ComponentModal = ({visible, setVisible}) => {
 
@@ -56,26 +56,26 @@ export const ComponentModalTask = ({visible, setVisible, addTask }) => {
             <View style={StylesLogin.modalView}>
               <Text style={styles.subtitle}>Cree su tarea</Text>
                 <TextInput 
-                  style={styles.input} 
+                  style={StylesRegister.input} 
                   onChangeText={texto => setTitulo(texto)} 
                   placeholder='Título' 
                   value={titulo}
                 />
 
                 <TextInput 
-                  style={styles.input} 
+                  style={StylesRegister.input} 
                   onChangeText={texto => setDescripcion(texto)} 
                   placeholder='Descripción'
                   value={descripcion} 
                 />
                 <TextInput 
-                  style={styles.input} 
+                  style={StylesRegister.input} 
                   onChangeText={texto => setAutor(texto)} 
                   placeholder='Autor' 
                   value={autor}
                 />
                 <TextInput 
-                  style={styles.input} 
+                  style={StylesRegister.input} 
                   onChangeText={texto => setFecha(texto)} 
                   placeholder='Fecha' 
                   value={fecha}

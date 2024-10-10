@@ -7,7 +7,7 @@ import { StyleSheet, Image, Platform,Text } from 'react-native';
 // import { ThemedText } from '@/components/ThemedText';
 // import { ThemedView } from '@/components/ThemedView';
 
-export default function TabTwoScreen() {
+export const TabTwoScreen = () => {
   return (
     <>
       <Text>Explore</Text>

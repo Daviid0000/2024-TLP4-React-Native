@@ -1,18 +1,20 @@
   import { Tabs } from 'expo-router';
-  import React from 'react';
+  import React, { useEffect } from 'react';
   import UserProvider from '@/context/userContext';
   import { TabBarIcon } from '@/components/navigation/TabBarIcon';
   import { Colors } from '@/constants/Colors';
   import { useColorScheme } from '@/hooks/useColorScheme';
 
   export default function TabLayout() {
-    // const colorScheme = useColorScheme();
-
-
 
     return (
       <UserProvider>
         <Tabs
+        screenOptions={{
+          tabBarStyle:{ backgroundColor:'#36f', borderTopColor: 'transparent', display: 'none'},
+          tabBarActiveTintColor: '#fff',
+          tabBarInactiveTintColor: '#666',
+        }}
           >
           <Tabs.Screen
             name="index"
@@ -23,7 +25,7 @@
               ),
             }}
           />
-          <Tabs.Screen
+          {/* <Tabs.Screen
             name="explore"
             options={{
               title: 'explore',
@@ -31,17 +33,18 @@
                 <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
               ),
             }}
-          /> 
-          <Tabs.Screen
+          />  */}
+          {/* <Tabs.Screen
             name="Setting"
             options={{
               title: 'Setting',
               tabBarIcon: ({ color, focused }) => (
-                <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+                <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
               ),
             }}
-          /> 
+          />  */}
         </Tabs>
+        
       </UserProvider>
     );
   }

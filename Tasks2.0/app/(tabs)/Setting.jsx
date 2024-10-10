@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, } from 'react-native';
 import { Button } from '@rneui/base';
 
-export default function Setting() {
+export const Setting = () => {
 
   return (
     <View style={styles.container}>

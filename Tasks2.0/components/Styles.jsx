@@ -13,7 +13,8 @@ export const StylesLogin = StyleSheet.create({
     },
     subtitle: {
       fontSize: 20,
-      borderBottomWidth: 2,
+      borderWidth: 2,
+      borderRadius: 5,
       borderColor: '#2231',
       padding: 10,
       margin: 10
@@ -22,7 +23,8 @@ export const StylesLogin = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      padding: 10
+      padding: 10,
+      backgroundColor: '#36f'
     },
     image: {
       width: 200,
@@ -62,9 +64,11 @@ export const StylesRegister = StyleSheet.create({
   input:{
     fontSize:20,
     width:300,
-    borderBottomWidth:2,
+    borderWidth:2,
+    borderRadius: 5,
+    margin: 5,
     borderColor:'#2231',
-    paddingVertical: 10
+    padding: 10
   },
   InputContainer:{
     display:'flex',

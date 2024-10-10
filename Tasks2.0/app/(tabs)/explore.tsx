@@ -1,5 +1,5 @@
 // import Ionicons from '@expo/vector-icons/Ionicons';
-import { StyleSheet, Image, Platform } from 'react-native';
+import { StyleSheet, Image, Platform,Text } from 'react-native';
 
 // import { Collapsible } from '@/components/Collapsible';
 // import { ExternalLink } from '@/components/ExternalLink';
@@ -10,7 +10,7 @@ import { StyleSheet, Image, Platform } from 'react-native';
 export default function TabTwoScreen() {
   return (
     <>
-      Explore
+      <Text>Explore</Text>
     </>
   );
 }
